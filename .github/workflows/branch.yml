@@ -2,8 +2,7 @@ name: branch workflow
 
 on:
   push:
-    # Only run on the master branch.
-    branches: [master]
+    # push on all branches
   create:
   delete:  
 
@@ -24,7 +23,7 @@ jobs:
       ENVIRONMENT_NAME: ${{github.event.ref}}
     steps: 
       - name: deploy application to new branch
-        if: github.event_name == 'create'
+        if: github.event_name == 'create' || github.ref != 'refs/heads/master'
         run: |
           echo "kubectl create -n ${ENVIRONMENT_NAME}"    
 
