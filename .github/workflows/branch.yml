@@ -20,12 +20,13 @@ jobs:
   branch:
     runs-on: ubuntu-latest
     env:
-      ENVIRONMENT_NAME: ${{github.event.ref##*/}}
+      ENVIRONMENT_NAME: ${{github.event.ref}}
+      BRANCH: ${ENVIRONMENT_NAME##*/}
     steps: 
       - name: deploy application to new branch
         if: github.event_name == 'create' || github.ref != 'refs/heads/master'
         run: |
-          echo "kubectl create -n ${ENVIRONMENT_NAME}"    
+          echo "kubectl create -n ${ENVIRONMENT_NAME##*/}"    
 
       - name: Delete application from removed branch
         if: github.event_name == 'delete'
