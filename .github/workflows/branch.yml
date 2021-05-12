@@ -25,7 +25,7 @@ jobs:
       - name: Set BRANCH value
         id: step_one
         run: |
-          echo "BRANCH=${ENVIRONMENT_NAME##*/}" >> $ENVIRONMENT_NAME
+          echo "${ENVIRONMENT_NAME##*/}" >> $ENVIRONMENT_NAME
       - name: deploy application to new branch
         if: github.event_name == 'create' || github.ref != 'refs/heads/master'
         run: |
