@@ -2,8 +2,7 @@ name: Context workflow
 
 on:
   push:
-    # Only run on the master branch.
-    branches: [master]
+    # run on push to all branches
   create:
   delete: 
 
