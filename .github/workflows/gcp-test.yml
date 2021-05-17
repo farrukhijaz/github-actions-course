@@ -29,7 +29,7 @@ on:
 jobs:
   gcp-deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/gcp-prototype' || github.ref == 'refs/heads/gcp-prototype-admin-iap' || github.ref == 'refs/pull/8/merge'
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/gcp-prototype' || github.ref == 'refs/heads/gcp-prototype-admin-iap' 
     env:
       ENVIRONMENT_NAME: prod
     steps: 
