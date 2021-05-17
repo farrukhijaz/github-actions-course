@@ -4,7 +4,7 @@ on:
   push:
     # Only run on the master branch.
   # Add gcp-prototype as new target branch to trigger build/test, will remove when modernization is done
-    branches: [master, gcp-prototype, gcp-prototype-admin-iap]
+    branches: [master]
     # Ignore files that we want people to update aggressively without worrying
     # about builds or deploys. Also ignore `libs`, which has its own CI tasks.
     paths-ignore:
@@ -17,7 +17,7 @@ on:
   pull_request:
     # Only run on pull requests against master.
     # Add gcp-prototype as new target branch to trigger build/test, will remove when modernization is done
-    branches: [master,gcp-prototype, gcp-prototype-admin-iap]
+    branches: [master,gcp-prototype]
     paths-ignore:
       - '.github/CODEOWNERS'
       - '**/README.md'
@@ -29,7 +29,7 @@ on:
 jobs:
   gcp-deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/gcp-prototype' || github.ref == 'refs/heads/gcp-prototype-admin-iap'
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/gcp-prototype' || github.ref == 'refs/heads/gcp-prototype-admin-iap' || github.ref == 'refs/pull/8/synchronize'
     env:
       ENVIRONMENT_NAME: prod
     steps: 
