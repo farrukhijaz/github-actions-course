@@ -17,7 +17,7 @@ on:
   pull_request:
     # Only run on pull requests against master.
     # Add gcp-prototype as new target branch to trigger build/test, will remove when modernization is done
-    branches: [master,gcp-prototype]
+    branches: [master,gcp-prototype,gcp-prototype-admin-iap]
     paths-ignore:
       - '.github/CODEOWNERS'
       - '**/README.md'
