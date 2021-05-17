@@ -36,3 +36,4 @@ jobs:
         run: |
           echo "kubectl create namespace ${ENVIRONMENT_NAME}"  
 #test1
+#test2
