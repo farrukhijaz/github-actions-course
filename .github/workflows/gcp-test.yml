@@ -14,9 +14,10 @@ on:
       - 'libs/java/**'
       - 'workers/**'
   pull_request:
+    types: [assigned, opened, synchronize, reopened, edited]
     # Only run on pull requests against master.
     # Add gcp-prototype as new target branch to trigger build/test, will remove when modernization is done
-    branches: [master,gcp-prototype, gcp-prototype-admin-iap]
+    branches: [master,gcp-prototype]
     paths-ignore:
       - '.github/CODEOWNERS'
       - '**/README.md'
