@@ -2,9 +2,29 @@ name: Context workflow
 
 on:
   push:
-    # run on push to all branches
-  create:
-  delete: 
+    # Only run on the master branch.
+  # Add gcp-prototype as new target branch to trigger build/test, will remove when modernization is done
+    branches: [master]
+    # Ignore files that we want people to update aggressively without worrying
+    # about builds or deploys. Also ignore `libs`, which has its own CI tasks.
+    paths-ignore:
+      - '.github/CODEOWNERS'
+      - '**/README.md'
+      - 'docs/**'
+      - 'libs/ts/**'
+      - 'libs/java/**'
+      - 'workers/**'
+  pull_request:
+    # Only run on pull requests against master.
+    # Add gcp-prototype as new target branch to trigger build/test, will remove when modernization is done
+    branches: [master,gcp-prototype]
+    paths-ignore:
+      - '.github/CODEOWNERS'
+      - '**/README.md'
+      - 'docs/**'
+      - 'libs/ts/**'
+      - 'libs/java/**'
+      - 'workers/**'
 
 jobs:
   print-context:
