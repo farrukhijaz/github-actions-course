@@ -1,0 +1,26 @@
+# by default it will be triggered on three different types of activities: 
+# opened, synchronize, and reopened.
+
+name: Pull Request Workflow
+on: [push, pull_request]
+
+jobs:
+  pul-request:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT_NAME: ${{github.event.ref}}
+    steps: 
+      - name: Set BRANCH value
+        id: step_one
+        run: |
+          echo "ENVIRONMENT_NAME=${ENVIRONMENT_NAME##*/}" >> $GITHUB_ENV
+      - name: deploy application to new branch
+        if: github.event_name == 'create' || github.ref != 'refs/heads/master'
+        run: |
+          echo "kubectl create namespace ${ENVIRONMENT_NAME}"    
+
+      - name: Delete application from removed branch
+        if: github.event_name == 'delete'
+        run: |
+          echo "kubectl delete namespace ${ENVIRONMENT_NAME}"
