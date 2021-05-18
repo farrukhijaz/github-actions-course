@@ -20,4 +20,4 @@ jobs:
       - name: deploy application to new branch
         run: |
           echo "kubectl create namespace ${ENVIRONMENT_NAME}"    
-  
+#DEPLOY-test1  
