@@ -18,6 +18,7 @@ jobs:
         id: step_one
         run: |
           echo "ENVIRONMENT_NAME=${{github.ref}}" >> $GITHUB_ENV
+          echo "ENVIRONMENT_NAME=${ENVIRONMENT_NAME##*/}" >> $GITHUB_ENV
       - name: deploy application to new branch
         run: |
           echo "kubectl create namespace ${ENVIRONMENT_NAME}"    
