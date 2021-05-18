@@ -2,9 +2,7 @@ name: Context workflow
 
 on:
   push:
-    # run on push to all branches
-  create:
-  delete: 
+  pull_request:
 
 jobs:
   print-context:
