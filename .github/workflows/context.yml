@@ -3,7 +3,7 @@ name: Context workflow
 on:
   push:
   pull_request:
-    types: [opened, synchronize, closed]
+    types: ['opened', 'synchronize', 'closed']
 
 jobs:
   print-context:
