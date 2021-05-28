@@ -1,5 +1,5 @@
 # by default it will be triggered on three different types of activities: 
-# opened, synchronize, and reopened.
+# opened, synchronize, and reopened..
 
 name: Pull Request Workflow
 on: [push, pull_request]
