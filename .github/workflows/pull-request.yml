@@ -9,6 +9,7 @@ jobs:
     if: |
       (github.event_name == 'pull_request' && github.event.action == 'opened' && github.event.pull_request.body == '#DEPLOY') ||
       (github.event_name == 'push' && contains(github.event.head_commit.message, '#DEPLOY'))
+
     runs-on: ubuntu-latest
     env:
       ENVIRONMENT_NAME: ${{github.head_ref}}
